@@ -49,7 +49,7 @@ export const App = () => {
     newdoingLogs.splice(index, 1);
     setDoingLogs(newdoingLogs);
 
-    const newtodoLogs = [...todoLogs, doingLogs[index]];
+    const newtodoLogs = [doingLogs[index], ...todoLogs];
     setTodoLogs(newtodoLogs);
   };
 
@@ -89,8 +89,8 @@ export const App = () => {
               return (
                 <div key={todo.id} div className="list-row">
                   <li>{todo}</li>
-                  <button onClick={() => onClickComplete(index)}>完了</button>
                   <button onClick={() => onClickBack(index)}>戻す</button>
+                  <button onClick={() => onClickComplete(index)}>完了</button>
                 </div>
               );
             })}

@@ -60,11 +60,13 @@ export const App = () => {
           placeholder="バックログを入力"
           value={todoText}
           onChange={onChangeTodoText}
-          disabled={todoLogs.length >= 3}
+          disabled={todoLogs.length + doingLogs.length >= 3}
         />
         <button onClick={onClickAdd}>追加</button>
       </div>
-      {todoLogs.length >= 3 && <p>登録できるバックログは3個までです</p>}
+      {todoLogs.length + doingLogs.length >= 3 && (
+        <p>登録できるバックログは3個までです</p>
+      )}
       <div className="backlog1">
         <div className="todo-area">
           <p className="title">TODO</p>

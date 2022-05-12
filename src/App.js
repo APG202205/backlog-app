@@ -10,6 +10,12 @@ export const App = () => {
   const [doingLogs, setDoingLogs] = useState([]);
   const [doneLogs, setDoneLogs] = useState([]);
 
+  //文字数上限値の設定
+  const inputTextNum = 14;
+
+  //上限数の変数化
+  const backLogNum = 20;
+
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 
   const onClickAdd = () => {
@@ -60,12 +66,26 @@ export const App = () => {
           placeholder="バックログを入力"
           value={todoText}
           onChange={onChangeTodoText}
-          disabled={todoLogs.length + doingLogs.length >= 3}
+          disabled={todoLogs.length + doingLogs.length >= backLogNum}
         />
-        <button onClick={onClickAdd}>追加</button>
+        <button
+          onClick={onClickAdd}
+          disabled={
+            encodeURI(todoText).replace(/%../g, "*").length >= inputTextNum
+          }
+        >
+          追加
+        </button>
       </div>
-      {todoLogs.length + doingLogs.length >= 3 && (
-        <p>登録できるバックログは3個までです</p>
+      {todoLogs.length + doingLogs.length >= backLogNum && (
+        <div>登録できるバックログは{backLogNum}個までです</div>
+      )}
+      {encodeURI(todoText).replace(/%../g, "*").length >= inputTextNum && (
+        <p>
+          これ以上入力出来ません。
+          {encodeURI(todoText).replace(/%../g, "*").length - inputTextNum + 1}
+          バイト減らしてください。
+        </p>
       )}
       <div className="backlog1">
         <div className="todo-area">

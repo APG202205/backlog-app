@@ -71,7 +71,7 @@ export const App = () => {
         <button
           onClick={onClickAdd}
           disabled={
-            encodeURI(todoText).replace(/%../g, "*").length >= inputTextNum
+            encodeURI(todoText).replace(/%../g, "*").length > inputTextNum
           }
         >
           追加
@@ -80,10 +80,10 @@ export const App = () => {
       {todoLogs.length + doingLogs.length >= backLogNum && (
         <div>登録できるバックログは{backLogNum}個までです</div>
       )}
-      {encodeURI(todoText).replace(/%../g, "*").length >= inputTextNum && (
+      {encodeURI(todoText).replace(/%../g, "*").length > inputTextNum && (
         <p>
-          これ以上入力出来ません。
-          {encodeURI(todoText).replace(/%../g, "*").length - inputTextNum + 1}
+          登録できる文字数は{inputTextNum}バイトまでです。
+          {encodeURI(todoText).replace(/%../g, "*").length - inputTextNum}
           バイト減らしてください。
         </p>
       )}

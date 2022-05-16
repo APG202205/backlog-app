@@ -11,7 +11,7 @@ export const App = () => {
   const [doneLogs, setDoneLogs] = useState([]);
 
   //文字数上限値の設定
-  const inputTextNum = 14;
+  const inputTextNum = 24;
 
   //上限数の変数化
   const backLogNum = 20;

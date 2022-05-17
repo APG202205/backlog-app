@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 
 //　コメント追加
@@ -15,6 +15,48 @@ export const App = () => {
 
   //上限数の変数化
   const backLogNum = 20;
+
+  //TODO永続化
+  useEffect(() => {
+    const temp1 = localStorage.getItem("keepTodo1");
+    const loadedTodo1 = JSON.parse(temp1);
+    if (loadedTodo1) {
+      setTodoLogs(loadedTodo1);
+    }
+  }, []);
+
+  useEffect(() => {
+    const temp1 = JSON.stringify(todoLogs);
+    localStorage.setItem("keepTodo1", temp1);
+  }, [todoLogs]);
+
+  //DOING永続化
+  useEffect(() => {
+    const temp2 = localStorage.getItem("keepTodo2");
+    const loadedTodo2 = JSON.parse(temp2);
+    if (loadedTodo2) {
+      setDoingLogs(loadedTodo2);
+    }
+  }, []);
+
+  useEffect(() => {
+    const temp2 = JSON.stringify(doingLogs);
+    localStorage.setItem("keepTodo2", temp2);
+  }, [doingLogs]);
+
+  //DONE永続化
+  useEffect(() => {
+    const temp3 = localStorage.getItem("keepTodo3");
+    const loadedTodo3 = JSON.parse(temp3);
+    if (loadedTodo3) {
+      setDoneLogs(loadedTodo3);
+    }
+  }, []);
+
+  useEffect(() => {
+    const temp3 = JSON.stringify(doneLogs);
+    localStorage.setItem("keepTodo3", temp3);
+  }, [doneLogs]);
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 

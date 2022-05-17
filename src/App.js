@@ -61,32 +61,43 @@ export const App = () => {
 
   return (
     <>
-      <div className="input-area">
-        <input
-          placeholder="バックログを入力"
-          value={todoText}
-          onChange={onChangeTodoText}
-          disabled={todoLogs.length + doingLogs.length >= backLogNum}
-        />
-        <button
-          onClick={onClickAdd}
-          disabled={
-            encodeURI(todoText).replace(/%../g, "*").length > inputTextNum
-          }
-        >
-          追加
-        </button>
+      <div class="Header">
+        <div class="input_alert">
+          <div className="input-area">
+            <input
+              placeholder="バックログを入力"
+              value={todoText}
+              onChange={onChangeTodoText}
+              disabled={todoLogs.length + doingLogs.length >= backLogNum}
+            />
+            <button
+              onClick={onClickAdd}
+              disabled={
+                encodeURI(todoText).replace(/%../g, "*").length > inputTextNum
+              }
+            >
+              追加
+            </button>
+          </div>
+          {todoLogs.length + doingLogs.length >= backLogNum && (
+            <div classname="alert">
+              登録できるバックログは{backLogNum}個までです
+            </div>
+          )}
+          {encodeURI(todoText).replace(/%../g, "*").length > inputTextNum && (
+            <div classname="alert">
+              登録できる文字数は{inputTextNum}バイトまでです。
+              {encodeURI(todoText).replace(/%../g, "*").length - inputTextNum}
+              バイト減らしてください。
+            </div>
+          )}
+        </div>
+        <div className="title_area">
+          <p className="title">TODO</p>
+          <p className="title">DOING</p>
+          <p className="title">DONE</p>
+        </div>
       </div>
-      {todoLogs.length + doingLogs.length >= backLogNum && (
-        <div>登録できるバックログは{backLogNum}個までです</div>
-      )}
-      {encodeURI(todoText).replace(/%../g, "*").length > inputTextNum && (
-        <p>
-          登録できる文字数は{inputTextNum}バイトまでです。
-          {encodeURI(todoText).replace(/%../g, "*").length - inputTextNum}
-          バイト減らしてください。
-        </p>
-      )}
       <div className="backlog1">
         <div className="todo-area">
           <p className="title">TODO</p>

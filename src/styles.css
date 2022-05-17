@@ -1,12 +1,14 @@
 body {
   font-family: sans-serif;
+  margin: 0;
 }
 
 input {
   border-radius: 16px;
   border: none;
-  padding: 6px 16px;
+  padding: 6px 100px;
   outline: none;
+  text-align: center;
 }
 
 button {
@@ -27,46 +29,49 @@ li {
 }
 
 .input-area {
-  background-color: #c1ffff;
-  width: 400px;
+  /*background-color: #c1ffff;*/
+  width: 500px;
   height: 40px;
-  padding: 8px;
-  margin: 8px;
-  border-radius: 8px;
+  /*padding: 2px;*/
+  /*margin: px;*/
+  /*border-radius: 8px;
+  /*display: flex;*/
 }
 
 .todo-area {
   background-color: #c6ffe2;
-  width: 400px;
+  width: calc(100% / 3);
   min-height: 550px;
-  padding: 8px;
-  margin: 8px;
+  padding: 70px 10px;
+  /*margin-left: 0px;*/
   border-radius: 8px;
 }
 
 .doing-area {
   background-color: #ffffe0;
-  width: 400px;
+  width: calc(100% / 3);
   min-height: 550px;
-  padding: 8px;
-  margin: 8px;
+  padding: 70px 10px;
+  /*margin-left: 0px;*/
   border-radius: 8px;
 }
 
 .done-area {
   background-color: #c1ffff;
-  width: 400px;
+  width: calc(100% / 3);
   min-height: 550px;
-  padding: 8px;
-  margin: 8px;
+  padding: 70px 10px;
+  /*margin: 8px;*/
   border-radius: 8px;
 }
 
 .title {
-  text-align: center;
+  white-space: nowrap;
+  /*text-align: center;*/
   margin-top: 0;
   font-weight: bold;
   color: #666;
+  width: 100%;
 }
 
 .list-row {
@@ -75,5 +80,28 @@ li {
   padding-bottom: 4px;
 }
 .backlog1 {
+  display: flex;
+}
+
+.Header {
+  white-space: nowrap;
+  position: fixed; /* ヘッダーを固定する */
+  top: 0; /* 上部から配置の基準位置を決める */
+  left: 0; /* 左から配置の基準位置を決める */
+  /*padding-right: 5;*/
+  width: 100%; /* ヘッダーの横幅を指定する */
+  height: 60px; /* ヘッダーの高さを指定する */
+  padding: 20px; /* ヘッダーの余白を指定する(上下左右) */
+  background-color: rgb(250, 250, 120); /* ヘッダーの背景色を指定する */
+  color: #000000; /* フォントの色を指定する */
+}
+
+.title_area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input_alert {
   display: flex;
 }
